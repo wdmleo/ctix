@@ -10,7 +10,7 @@ import {
 } from '@tools/misc';
 import { getTypeScriptExportStatement } from '@tools/tsfiles';
 import { TResolvedEither, TResolvedPromise } from '@tools/typehelper';
-import { camelCase } from 'change-case';
+import { pascalCase } from 'change-case';
 import dayjs from 'dayjs';
 import debug from 'debug';
 import * as TEI from 'fp-ts/Either';
@@ -112,7 +112,7 @@ function createDefaultExportContents({
     const refined = TFU.flow(fpRefinePathSep, fpRemoveExt, fpRefineStartSlash)(replaced);
     const refinedAlias = TFU.flow(fpRefinePathSep, fpRemoveExtWithTSX)(replaced);
 
-    const defaultExportFileContent = `export { default as ${camelCase(
+    const defaultExportFileContent = `export { default as ${pascalCase(
       refinedAlias,
     )} } from ${quote}./${refined}${quote}`;
 
